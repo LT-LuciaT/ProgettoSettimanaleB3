@@ -12,12 +12,11 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "item_type", discriminatorType = DiscriminatorType.STRING)
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class CatalogoItem {
     @Id
     private String isbn;
-
     private String title;
     private int publicationYear;
     private int pageCount;

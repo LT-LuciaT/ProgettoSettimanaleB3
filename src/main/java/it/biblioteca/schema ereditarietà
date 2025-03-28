@@ -1,0 +1,13 @@
+Relazioni principali:
+Ereditarietà:
+
+Book e Magazine ereditano da CatalogoItem (strategia JOINED)
+
+Associazioni:
+
+User 1---* Loan: Un utente può avere molti prestiti
+
+CatalogoItem 1---* Loan: Un elemento può essere prestato più volte
+
+Loan *---1 User e Loan *---1 CatalogoItem: Ogni prestito è associato a un utente e a un elemento
+

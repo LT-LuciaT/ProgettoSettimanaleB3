@@ -1,25 +1,31 @@
 package it.biblioteca.entities;
 
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Table;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@DiscriminatorValue("MAGAZINE")
 @Entity
+@Table(name = "magazines")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(callSuper = true)
+
 public class Magazine extends CatalogoItem {
     @Enumerated(EnumType.STRING)
     private Periodicity periodicity;
 
     public Magazine(String isbn, String title, int publicationYear, int pageCount, Periodicity periodicity) {
-        super(isbn, title, publicationYear, pageCount);
+        this.setIsbn(isbn);
+        this.setTitle(title);
+        this.setPublicationYear(publicationYear);
+        this.setPageCount(pageCount);
         this.periodicity = periodicity;
     }
 }

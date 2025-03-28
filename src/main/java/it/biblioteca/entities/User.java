@@ -1,18 +1,20 @@
 package it.biblioteca.entities;
 
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,5 +26,12 @@ public class User {
     private String cardNumber;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Prestito> prestiti;
+    private List<Loan> loans;
+
+    public User(String name, String surname, LocalDate birthDate, String cardNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.cardNumber = cardNumber;
+    }
 }
